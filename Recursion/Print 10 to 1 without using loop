@@ -1,0 +1,21 @@
+public class Print10to1 {
+
+	static void printNumber(int num) {
+
+		if (num == 1) {
+			System.out.println(1);
+			return;
+		} else {
+			System.out.println(num);
+			printNumber(num - 1);
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		int number = 10;
+		printNumber(number);
+	}
+
+}
