@@ -1,0 +1,44 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+
+public class ReverseStackUsingRecursion {
+
+	private static void reverseStack(Stack<Integer> stack) {
+		
+		if(stack.isEmpty())
+		{
+			return;
+		}
+		
+		int temp=stack.pop();
+		
+		reverseStack(stack);
+		
+		insertStack(stack,temp);
+		
+		}
+	private static void insertStack(Stack<Integer> stack, int temp) {
+		
+		if(stack.isEmpty())
+		{
+			stack.push(temp);
+			return;
+		}
+		
+		int value=stack.pop();
+		insertStack(stack,temp);
+		stack.push(value);
+		
+	}
+	public static void main(String[] args) {
+		List<Integer> list = Arrays.asList(5, -2, 9, -7, 3);
+		Stack<Integer> stack = new Stack<>();
+		stack.addAll(list);
+		
+		reverseStack(stack);
+		
+		System.out.println("stack reverse:-"+stack);
+
+	}
+}
