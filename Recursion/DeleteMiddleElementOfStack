@@ -1,0 +1,38 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+
+public class DeleteMiddleElementOfStack {
+	private static void callStack(Stack<Integer> stack, int sizeOfStack) {
+  
+  // Consider mid is size/2+1
+  
+		int mid = sizeOfStack / 2 + 1;
+		deleteMidElement(stack, mid);
+
+	}
+
+	private static void deleteMidElement(Stack<Integer> stack, int mid) {
+
+		if (mid == 1) {
+			stack.pop();
+			return;
+		}
+
+		int temp = stack.pop();
+		deleteMidElement(stack, mid - 1);
+		stack.push(temp);
+
+	}
+
+	public static void main(String[] args) {
+		List<Integer> list = Arrays.asList(5, -2, 9, -7, 3);
+		Stack<Integer> stack = new Stack<>();
+		stack.addAll(list);
+		int sizeOfStack = 5;
+		callStack(stack, sizeOfStack);
+		System.out.println("middle elemet deleted " + stack);
+
+	}
+
+}
