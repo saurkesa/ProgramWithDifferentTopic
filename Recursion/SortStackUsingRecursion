@@ -1,0 +1,44 @@
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+
+public class SortStackUsingRecursion {
+
+	private static void sortStack(Stack<Integer> stack) {
+
+		if (stack.isEmpty()) {
+			return;
+		}
+
+		int temp = stack.pop();
+		sortStack(stack);
+		sortedInsert(stack, temp);
+
+	}
+
+	private static void sortedInsert(Stack<Integer> stack, int key) {
+
+		if (stack.isEmpty() || key > stack.peek()) {
+			stack.push(key);
+			return;
+		}
+
+		int top = stack.pop();
+		sortedInsert(stack, key);
+		stack.push(top);
+
+	}
+
+	public static void main(String[] args) {
+
+		List<Integer> list = Arrays.asList(5, -2, 9, -7, 3);
+		Stack<Integer> stack = new Stack<>();
+		stack.addAll(list);
+		System.out.println("stack before sorting " + stack);
+		sortStack(stack);
+		System.out.println("stack After sorting " + stack);
+
+	}
+
+}
