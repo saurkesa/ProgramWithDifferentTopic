@@ -1,0 +1,22 @@
+/*source,destination,helper*/
+public class TowerOfHanoi {
+
+	private static void towerOfHanoi(char s, char d, char h, int n) {
+		if (n == 1) {
+			System.out.println("Move disk 1 from rod " + s + " to rod " + d);
+			return;
+		}
+		towerOfHanoi(s, h, d, n - 1);
+		System.out.println("Move disk " + n + " from rod " + s + " to rod " + d);
+		towerOfHanoi(h, d, s, n - 1);
+
+	}
+
+	public static void main(String[] args) {
+
+		int n = 3;
+		towerOfHanoi('s', 'd', 'h', n);
+
+	}
+
+}
