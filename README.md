@@ -2,7 +2,7 @@
 
 #Refer Aditya verma playlist in you tube
 
-Recursion:-
+1) Recursion:-
 HIB( Hypothesis Induction base condtion)
 base condition: smallest valid input
 hypothesis:---method
@@ -14,4 +14,13 @@ TRICK:- always store one element into variable then do induction( see aditya vid
 
 sort stack using recursion:
 https://www.youtube.com/watch?v=lDThYwMDNTU&t=694s
+
+========================================================================
+
+2) powerset ---ab------{a,b,ab} ----all subset of a set is called powerset
+subset- order not matter like it is bag ----------example abc----ac ,ca (both are possbile)
+subsequences----order matter and it is like chain ----------example abc---- ac possible but ca not possible
+
+
+
 
