@@ -1,0 +1,31 @@
+// once recursion tree is done then code is cakewalk
+
+public class SubsetOfString {
+
+	private static void subsetOfString(String input, String output) {
+		// base condition
+		if(input.length()==0){
+            System.out.println(output);
+            return;
+        }
+        String output1 = output;
+        String output2 = output;
+        output2 += input.charAt(0);
+        input = input.substring(1);
+		subsetOfString(input, output1);
+		subsetOfString(input, output2);
+
+	}
+
+	public static void main(String[] args) {
+
+		String input = "ab";
+		String output = " ";
+		subsetOfString(input, output);
+
+	}
+
+}
+
+
+//output ---a,b,ab
