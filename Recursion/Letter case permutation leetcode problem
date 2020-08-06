@@ -1,0 +1,47 @@
+/*
+Input: S = "a1b2"
+Output: ["a1b2", "a1B2", "A1b2", "A1B2"]
+
+Input: S = "3z4"
+Output: ["3z4", "3Z4"]
+
+Input: S = "12345"
+Output: ["12345"]
+*/
+
+public class LetterCasePermutation {
+
+	private static void letterCasePermutation(String input, String output) {
+		if (input.length() == 0) {
+			System.out.println(output);
+			return;
+		}
+
+		if (Character.isLetter(input.charAt(0))) {
+			String output1 = output;
+			String output2 = output;
+
+			output1 = output + String.valueOf(input.charAt(0)).toLowerCase();
+			output2 = output + String.valueOf(input.charAt(0)).toUpperCase();
+			input = input.substring(1);
+			letterCasePermutation(input, output1);
+			letterCasePermutation(input, output2);
+		} else {
+			String output1 = output;
+			output1 = output + String.valueOf(input.charAt(0));
+			input = input.substring(1);
+			letterCasePermutation(input, output1);
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		String input = "3z4";
+		String output = " ";
+
+		letterCasePermutation(input, output);
+
+	}
+
+}
