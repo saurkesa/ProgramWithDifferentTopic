@@ -1,0 +1,51 @@
+/*
+  1)Opening bracket choice is always there but closing bracket choice is sometimes there                 sometime not
+  2) If close bracket is greater than open bracket then two choices are there and then we are getting closing option
+  3)When open count become zero we are not getting opening option
+  
+  output :-- [((())), (()()), (())(), ()(()), ()()()]
+*/
+import java.util.ArrayList;
+import java.util.List;
+
+public class GenerateAllBalanacedParentheses {
+
+	private static void generateAllBalanacedParentheses(int open, int close, String output, List<String> list) {
+		
+		if(open==0 && close==0)
+		{
+			list.add(output);
+			return;
+		}
+		
+		if(open!=0)
+		{
+			String output1=output;
+			output1 = output1 + "(";
+			generateAllBalanacedParentheses(open-1,close,output1,list);
+		}
+		if(close>open)
+		{
+			String  output2 = output;
+			output2 = output2 + ")";
+			generateAllBalanacedParentheses(open,close-1,output2,list);
+		}
+		
+
+	}
+
+	public static void main(String[] args) {
+
+		List<String> list = new ArrayList<>();
+		int n = 3;
+		int open = n;
+		int close = n;
+		String output = "";
+
+		generateAllBalanacedParentheses(open, close, output, list);
+		
+		System.out.println(list);
+
+	}
+
+}
