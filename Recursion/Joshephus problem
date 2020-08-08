@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.List;
+
+//Consider if n = 5 and k = 2, then the safe position is 3.
+public class JosephusProblem {
+
+	private static void josephusProblem(List<Integer> list, int k, int index) {
+
+		if (list.size() == 1) {
+			System.out.println(list.get(0));
+			return;
+		}
+
+		index = (index + k) % list.size();
+		list.remove(index);
+		josephusProblem(list, k, index);
+
+	}
+
+	public static void main(String[] args) {
+		List<Integer> list = new ArrayList<>();
+		int n = 40;
+		int k = 7;
+		k = k - 1;
+
+		for (int i = 1; i <= n; i++) {
+			list.add(i);
+		}
+
+		int index = 0;// represent sword
+
+		josephusProblem(list, k, index);
+
+	}
+
+}
