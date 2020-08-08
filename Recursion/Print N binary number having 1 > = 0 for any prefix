@@ -1,0 +1,41 @@
+
+/*Prefix : Print N binary number having 1 > = 0 for any prefix
+ * n=3
+ * o/p
+ * 111 ---prefix 111,11,1
+110----110,11,1
+101----101,10,1
+ * 
+ * */
+
+public class PrintBinaryNumberPrefix {
+	private static void printBinaryNumberPrefix(int one, int zero, int n, String output) {
+
+		if (n == 0) {
+			System.out.println(output);
+			return;
+		}
+		String output1 = output;
+		output1 = output1 + "1";
+		printBinaryNumberPrefix(one + 1, zero, n - 1, output1);
+
+		if (one > zero) {
+			String output2 = output;
+			output2 = output2 + "0";
+			printBinaryNumberPrefix(one, zero + 1, n - 1, output2);
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		int n = 3;
+		int one = 0;
+		int zero = 0;
+		String output = "";
+
+		printBinaryNumberPrefix(one, zero, n, output);
+
+	}
+
+}
