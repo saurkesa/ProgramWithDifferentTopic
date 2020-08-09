@@ -19,7 +19,7 @@ public class SortStackUsingRecursion {
 
 	private static void sortedInsert(Stack<Integer> stack, int key) {
 
-		if (stack.isEmpty() || key > stack.peek()) {
+		if (stack.isEmpty() || key >= stack.peek()) {
 			stack.push(key);
 			return;
 		}
