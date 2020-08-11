@@ -2,7 +2,7 @@
 
 #Refer Aditya verma playlist in you tube
 
-1) Recursion:-
+                                                      Topic 1) Recursion:-
 HIB( Hypothesis Induction base condtion)
 base condition: smallest valid input
 hypothesis:---method
@@ -23,6 +23,11 @@ https://www.youtube.com/watch?v=lDThYwMDNTU&t=694s
    subsequences----order matter and it is like chain ----------example abc---- ac possible but ca not possible
    
    substring :---string should be in continous
+   
+                                  
+                                  Topic 2: Binary Search
+     
+Binary search works on sorted arrays. Binary search begins by comparing an element in the middle of the array with the target value. If the target value matches the element, its position in the array is returned. If the target value is less than the element, the search continues in the lower half of the array.
   
 
 
