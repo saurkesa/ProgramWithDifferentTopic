@@ -1,0 +1,35 @@
+
+// Binary search in soreted array
+
+public class FindIndexOfElementInSortedArray {
+
+	private static int findIndexOfElement(int[] arr, int element) {
+
+		int start = 0;
+		int end = arr.length - 1;
+
+		while (start <= end) {
+			int mid = start + (end-start)/2;
+
+			if (arr[mid] == element) {
+				return mid;
+			} else if (arr[mid] > element) {
+				end = mid - 1;
+			} else {
+				start = mid + 1;
+			}
+		}
+
+		return -1;
+
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		int element = 8;
+		System.out.println(findIndexOfElement(arr, element));
+
+	}
+
+}
