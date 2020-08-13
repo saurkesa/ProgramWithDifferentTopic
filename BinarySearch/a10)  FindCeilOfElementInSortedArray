@@ -10,7 +10,11 @@ public class FindCeilOfElementInSortedArray {
 		while (start <= end) {
 			int mid = start + (end - start) / 2;
 
-			if (arr[mid] > element) {
+			if(arr[mid]==element)
+			{
+				return arr[mid];
+			}
+			else if (arr[mid] > element) {
 				result = arr[mid];
 				end = mid - 1;
 			} else {
