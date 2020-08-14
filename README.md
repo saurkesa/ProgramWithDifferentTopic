@@ -30,6 +30,7 @@ https://www.youtube.com/watch?v=lDThYwMDNTU&t=694s
 Binary search works on sorted arrays. Binary search begins by comparing an element in the middle of the array with the target value. If the target value matches the element, its position in the array is returned. If the target value is less than the element, the search continues in the lower half of the array.
 
 Peak element: will be greater of both it neighbour element
+note : for first and last element only one neighbour is there so they will check with that if it is greater then that will be peak element
   
 
 
