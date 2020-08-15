@@ -42,7 +42,10 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
     
  Identification:-
  1)k
+ 
  2)smallest/largest
+ 
+ NOTE: k+smallest ---max heap will make and k+largest ---min heap will create
 
 
 
