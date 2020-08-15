@@ -31,6 +31,12 @@ Binary search works on sorted arrays. Binary search begins by comparing an eleme
 
 Peak element: will be greater of both it neighbour element
 note : for first and last element only one neighbour is there so they will check with that if it is greater then that will be peak element
+
+Bitonic Array: An array is said to be bitonic if the elements in the array are first strictly increasing then strictly decreasing
+
+Problem: search element in bitonic array
+first find peak element then call two binary search tree and search element.
+bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
   
 
 
