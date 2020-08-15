@@ -1,0 +1,82 @@
+// array index value:---denotes number of pages in book
+
+//start - max element in array
+// end---sum of all element in array
+
+public class AllocateMinimumNumberOfPages {
+
+	private static int findMax(int[] arr) {
+
+		int max = arr[0];
+
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] > max) {
+				max = arr[i];
+			}
+		}
+		return max;
+	}
+
+	private static int sumOfElementInArray(int[] arr) {
+
+		int sum = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+			sum = sum + arr[i];
+		}
+		return sum;
+	}
+
+	private static int allocateMinimumNumberOfPages(int[] arr, int start, int end) {
+
+		int low = start;
+		int high = end;
+		int k = 2; // number of student
+		int n = arr.length;
+		int result = -1;
+		while (low <= high) {
+			int mid = low + (high - low) / 2;
+
+			if (isValid(arr, k, n, mid) == true) {
+				result = mid;
+				high = mid - 1;
+
+			} else {
+				low = mid + 1;
+			}
+		}
+
+		return result;
+	}
+
+	private static boolean isValid(int[] arr, int k, int n, int max) {
+
+		int student = 1;
+		int sum = 0;
+		for (int i = 0; i < n; i++) {
+			sum = sum + arr[i];
+
+			if (sum > max) {
+				student++;
+			}
+			if (student > k) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static void main(String[] args) {
+
+		int arr[] = { 10, 20, 30, 40 };
+
+		int start = findMax(arr);
+
+		int end = sumOfElementInArray(arr);
+
+		int allocateMinimumNumberOfPages = allocateMinimumNumberOfPages(arr, start, end);
+
+		System.out.println("allocate minimum number of pages for student is " + allocateMinimumNumberOfPages);
+	}
+
+}
