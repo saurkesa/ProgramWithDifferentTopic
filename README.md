@@ -38,6 +38,11 @@ Problem: search element in bitonic array
 first find peak element then call two binary search tree and search element.
 bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
   
+                                                  Topic 3- Heap
+    
+ Identification:-
+ 1)k
+ 2)smallest/largest
 
 
 
