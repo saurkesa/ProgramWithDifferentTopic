@@ -39,8 +39,25 @@ Bitonic Array: An array is said to be bitonic if the elements in the array are f
 Problem: search element in bitonic array
 first find peak element then call two binary search tree and search element.
 bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
+
+                                                   Topic 3) Stack
+                                                   
+ Identification) whwre we can use stack
+ 
+ for(int i=0; i< n;i++)
+ {
+ for(int j=0; j<i; j++)
+ {
+ 
+  here j is depenedent on i   ---------    0----------i---------------n
+   j---->  0---i j++
+   j----> i----0 j--
+   j----> i----n j++
+   j----> n----i j--
+   
+   }
   
-                                                  Topic 3- Heap
+                                                  Topic 4- Heap
     
  Identification:-
  1)k
