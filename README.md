@@ -42,7 +42,7 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
 
                                                    Topic 3) Stack
                                                    
- Identification) whwre we can use stack
+ Identification) whwre we can use stack : if second loop is depend on i( first loop) then think to use stack
  
  for(int i=0; i< n;i++)
  {
