@@ -1,4 +1,14 @@
-/*source,destination,helper*/
+/*source,destination,helper
+
+output:
+Move disk 1 from rod s to rod d
+Move disk 2 from rod s to rod h
+Move disk 1 from rod d to rod h
+Move disk 3 from rod s to rod d
+Move disk 1 from rod h to rod s
+Move disk 2 from rod h to rod d
+Move disk 1 from rod s to rod d
+*/
 public class TowerOfHanoi {
 
 	private static void towerOfHanoi(char s, char d, char h, int n) {
