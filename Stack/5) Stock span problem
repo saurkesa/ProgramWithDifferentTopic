@@ -2,6 +2,7 @@
 //consecutive smaller or equivalent before if.
 //create pair in stack . first  will store element and second will store index
 //find NGE index then do i-NGL(index)
+// output : consecutive smaller element [1, 1, 1, 2, 1, 4, 6]
 
 import java.util.ArrayList;
 import java.util.List;
