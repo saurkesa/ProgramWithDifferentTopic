@@ -2,6 +2,8 @@
 
 // if elemet not found then start and end and mid will reach at same index some point
 
+// output: minimum difference of key 14 is 1
+
 public class MinimumDifferenceElementSortedArray {
 
 	private static int minimumDifferenceElementSortedArray(int[] arr, int key) {
