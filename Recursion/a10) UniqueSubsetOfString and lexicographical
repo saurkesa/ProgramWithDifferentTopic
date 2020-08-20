@@ -1,3 +1,7 @@
+/* output
+[ ,  a,  aa,  aab,  ab,  b]
+*/
+
 public class UniqueSubsetOfString {
 	private static void subsetOfString(String input, String output, Set<String> s) {
 		// base condition
