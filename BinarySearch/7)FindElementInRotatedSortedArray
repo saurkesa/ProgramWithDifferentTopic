@@ -1,5 +1,6 @@
 
 // first find minimum element then use binary search in two sorted array
+// output : elementIndex of 15 is 2
 
 public class FindElementInRotatedSortedArray {
 
