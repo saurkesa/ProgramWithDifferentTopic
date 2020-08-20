@@ -1,4 +1,9 @@
-// once recursion tree is done then code is cakewalk
+/* once recursion tree is done then code is cakewalk
+ 
+ b
+ a
+ ab
+*/
 
 public class SubsetOfString {
 
