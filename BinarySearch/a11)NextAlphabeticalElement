@@ -1,3 +1,4 @@
+// output: nextAlphabeticalElement of d is f
 public class NextAlphabeticalElement {
 
 	private static char nextAlphabeticalElement(char[] arr, char element) {
