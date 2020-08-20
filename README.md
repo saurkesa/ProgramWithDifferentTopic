@@ -51,11 +51,16 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
  
   here j is depenedent on i   ---------    0----------i---------------n
    j---->  0---i j++
-   j----> i----0 j--
+   
+   j----> i----0 j-- 
+   
    j----> i----n j++
+   
    j----> n----i j--
    
    }
+   
+   Stock span problem : consecutive smaller or equivalen before it
   
                                                   Topic 4- Heap
     
