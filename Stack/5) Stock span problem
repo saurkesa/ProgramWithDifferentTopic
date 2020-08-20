@@ -1,0 +1,62 @@
+
+//consecutive smaller or equivalent before if.
+//create pair in stack . first  will store element and second will store index
+//find NGE index then do i-NGL(index)
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class StockSpanProblem {
+	class Pair {
+
+		int num;
+		int index;
+
+		Pair(int num, int index) {
+			this.num = num;
+			this.index = index;
+		}
+
+	}
+
+	private static List<Integer> stockSpanProblem(int[] arr) {
+
+		ArrayList<Integer> list = new ArrayList<>();
+		Stack<Pair> stack = new Stack<>();
+
+		for (int i = 0; i < arr.length; i++) {
+			if (stack.isEmpty()) {
+				list.add(-1);
+			} else if (stack.size() > 0 && arr[i] < stack.peek().num) {
+				list.add(stack.peek().index);
+			} else if (stack.size() > 0 && arr[i] >= stack.peek().num) {
+				while (stack.size() > 0 && arr[i] >= stack.peek().num) {
+					stack.pop();
+				}
+				if (stack.size() == 0) {
+					list.add(-1);
+				} else {
+					list.add(stack.peek().index);
+				}
+			}
+			stack.push(new StockSpanProblem().new Pair(arr[i], i));
+		}
+		return list;
+	}
+
+	public static void main(String[] args) {
+
+		int arr[] = { 100, 80, 60, 70, 60, 75, 85 };
+
+		List<Integer> nearestGreaterToLeftIndex = stockSpanProblem(arr);
+		
+		List<Integer> consecutiveSmallerElement = new ArrayList();
+
+		for (int i = 0; i < arr.length; i++) {
+			consecutiveSmallerElement.add(i - nearestGreaterToLeftIndex.get(i));
+		}
+		System.out.println("consecutive smaller element " + consecutiveSmallerElement);
+
+	}
+}
