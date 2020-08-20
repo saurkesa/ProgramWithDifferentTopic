@@ -1,3 +1,7 @@
+//Peak element: will be greater of both it neighbour element note :
+//for first and last element only one neighbour is there so they will check with that if it is greater then that will be peak element
+// output: peak element = 4
+
 public class FindPeakElement {
 	
 	 public static int findPeakElement(int[] nums) {
