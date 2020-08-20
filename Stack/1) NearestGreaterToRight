@@ -1,5 +1,7 @@
 // need to reverse list to get answer when we trverse from right to left
 
+// output : nearest greater to right [3, 4, 4, 5, 8, -1, -1]
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
