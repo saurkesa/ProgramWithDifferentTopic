@@ -61,6 +61,8 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
    }
    
    Stock span problem : consecutive smaller or equivalen before it
+   
+   Maximum area histogram ==  width =NSR(index) - NSL(index)-1
   
                                                   Topic 4- Heap
     
