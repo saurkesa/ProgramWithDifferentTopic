@@ -80,27 +80,27 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
  NOTE: k+smallest ---max heap will make and k+largest ---min heap will create
  
  
- | Attributes | Data Type | Description |
-| ---------- | --------- | ----------- |
-| AssetType | string | Type of asset : Hardware / Software |
-| ProfileName | string | Profile Name field value |
-| HclStatus | string | Hcl Status field value |
-| UcsDomain | string | Ucs Domain field value |
-| HxClusterName | string | Hx Cluster field value |
-| PortalUrl | string | Portal Url field value |
-| ManagementMode | string | Management mode of the device - UCSM, IntersightStandalone, Intersight |
-| ModTime | long | Mod time field value |
-| AccountMoid | string | Account Moid field value |
-| ConnectionStatus | string | Connection Status field value |
-| ConnectionStatusChangeTime | long | Connection status change time field value |
-| UcsdStatus | string | Ucsd status licensing field value |
-| UcsdLicenseInfoMoid | string | Ucsd License Info field value |
-| IntersightLicenseStatus | string | Intersight License Status field value |
-| IntersightLicenseLevel | long | Intersight License Level field value |
-| AssetTag | string | AssetTag field value |
-| Guid | string | Guid field value |
-| IntersightTags | array | The tag entry. This contains both user and system defined tag values. |
-
-
+| Attributes | Tags | Data Type | Description |
+| ---------- | ---- | --------- | ----------- |
+| assetType | Inventory | string | Type of asset : Hardware / Software |
+| profileName | Inventory | string | Profile Name field value |
+| hclStatus | Inventory | string | Hcl Status field value |
+| ucsDomain | Inventory | string | Ucs Domain field value |
+| hxClusterName | Inventory | string | Hx Cluster field value |
+| portalUrl | Inventory | string | Portal Url field value |
+| managementMode | Inventory | string | Management mode of the device - UCSM, IntersightStandalone, Intersight |
+| modTime | Inventory | long | Mod time field value |
+| accountMoid | Inventory | string | Account Moid field value |
+| connectionStatus | Inventory | string | Connection Status field value |
+| connectionStatusChangeTime | Inventory | long | Connection status change time field value |
+| ucsdStatus | Inventory | string | Ucsd status licensing field value |
+| ucsdLicenseInfoMoid | Inventory | string | Ucsd License Info field value |
+| intersightLicenseStatus | Inventory | string | Intersight License Status field value |
+| intersightLicenseLevel | Inventory | long | Intersight License Level field value |
+| parentMoid | Inventory | string | Parent Moid field value |
+| moid | Inventory | string | Moid field value |
+| clusterMoid | Inventory | string | Cluster Moid field value | 
+| platformType | Inventory | string | Platform Type field value |
+| intersightTags | Inventory | array | The tag entry. This contains both user and system defined tag  values. |
 
 
