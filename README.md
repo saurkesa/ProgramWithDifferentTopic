@@ -99,7 +99,7 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
 | IntersightLicenseLevel | long | Intersight License Level field value |
 | AssetTag | string | AssetTag field value |
 | Guid | string | Guid field value |
-| intersightTags | array | The tag entry. This is set by the user via the API. |
+| IntersightTags | array | The tag entry. This contains both user and system defined tag values. |
 
 
 
