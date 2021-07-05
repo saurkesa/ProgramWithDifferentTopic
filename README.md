@@ -157,12 +157,12 @@ cat output.json
 
 ``` 
 
-### this section will cover DCC Post Processing based on Data Source 
+### This section will cover DCC Post Processing based on Data Source 
 
-   1.  In Post Processing the profiledDeviceData received from dcc DP will be processed further based on clusterMoId.
+   1. In Post Processing the profiledDeviceData received from dcc DP will be processed further based on clusterMoId.
   
-   2.  The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
+   2. The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
 
    3. Once grouped, the lowest IP or Hostname  of its respective  NE will be identified.
 
-   4.) Identified NE's managedNeId will be assigned to all other NEs of the same device.
+   4. Identified NE's managedNeId will be assigned to all other NEs of the same device.
