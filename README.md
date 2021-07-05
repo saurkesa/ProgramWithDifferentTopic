@@ -156,14 +156,13 @@ cat output.json
 	}
 
 ``` 
-
-###  Post Processing
-##  De-Duplication Logic
+##  Post Processing
+###  De-Duplication Logic
 - Form a map with key - managedNeId and value - list of profiledDeviceData
 - Based on same managedNeId grouped device while iterating profiledDeviceData.
 - Iterating the map and for same key(managedNeId) based on considering the length of   profiledDeviceData if it is more than 0 then considered first one only.
 
-## DCN Post Processor
+### DCN Post Processor
 RegisteredDeviceMOID from ne.json is the identifier to indicate which assets are in the same APIC “cluster”.
 You will need this in order to populate the “Controller” value for each asset.  Here is the logic that has been agreed to:
 -	Within a RegisteredDeviceMOID, get list of IPAddress where deviceType=controller.
@@ -172,9 +171,9 @@ You will need this in order to populate the “Controller” value for each asse
 -   IP Address of Controller (APIC) with lowest IP needs to be mapped to its corresponding leafs, spines and other controllers that share the same  RegisteredDeviceMOID .
 -   This controller IP Address will be assigned as mgmtSystemAddr and set to each devices' additional properties.
 
-##  DCC Post Processor
-   1. In Post Processing the profiledDeviceData received from dcc DP will be processed further based on clusterMoId.
-   2. The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
-   3. Once grouped, the lowest IP or Hostname  of its respective  NE will be identified.
-   4. Identified NE's managedNeId will be assigned to all other NEs of the same device.
+###  DCC Post Processor
+- In Post Processing the profiledDeviceData received from dcc DP will be processed further based on clusterMoId.
+- The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
+- Once grouped, the lowest IP or Hostname  of its respective  NE will be identified.
+- Identified NE's managedNeId will be assigned to all other NEs of the same device.
 
