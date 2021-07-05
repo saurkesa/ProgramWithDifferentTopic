@@ -162,7 +162,6 @@ cat output.json
 - If the length of value in above map is > 1, then there is a duplicate device with same managedNeId.
 - Remove/ De-duplicate the duplicate devices entry by considering only the first element in the value of the map and recreate the map.
 - Return the main array of ProfiledDeviceData using the recreated map.
-
 ### DCN Post Processor
 RegisteredDeviceMOID from ne.json is the identifier to indicate which assets are in the same APIC “cluster”.
 You will need this in order to populate the “Controller” value for each asset.  Here is the logic that has been agreed to:
@@ -171,7 +170,6 @@ You will need this in order to populate the “Controller” value for each asse
 -	Assign every asset in that RegisteredDeviceMOID with controller value of the select IP Address.
 -   IP Address of Controller (APIC) with lowest IP needs to be mapped to its corresponding leafs, spines and other controllers that share the same  RegisteredDeviceMOID .
 -   This controller IP Address will be assigned as mgmtSystemAddr and set to each devices' additional properties.
-
 ###  DCC Post Processor
 - In Post Processing the profiledDeviceData received from dcc DP will be processed further based on clusterMoId.
 - The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
