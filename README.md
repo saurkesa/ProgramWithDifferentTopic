@@ -157,12 +157,24 @@ cat output.json
 
 ``` 
 
-### This section will cover DCC Post Processing based on Data Source 
+###  Post Processing
+##  De-Duplication Logic
+- Form a map with key - managedNeId and value - list of profiledDeviceData
+- Based on same managedNeId grouped device while iterating profiledDeviceData.
+- Iterating the map and for same key(managedNeId) based on considering the length of   profiledDeviceData if it is more than 0 then considered first one only.
 
+## DCN Post Processor
+RegisteredDeviceMOID from ne.json is the identifier to indicate which assets are in the same APIC “cluster”.
+You will need this in order to populate the “Controller” value for each asset.  Here is the logic that has been agreed to:
+-	Within a RegisteredDeviceMOID, get list of IPAddress where deviceType=controller.
+-	Choose one IP (recommend we use lowest IP) to be the cluster/controller “IP”
+-	Assign every asset in that RegisteredDeviceMOID with controller value of the select IP Address.
+-   IP Address of Controller (APIC) with lowest IP needs to be mapped to its corresponding leafs, spines and other controllers that share the same  RegisteredDeviceMOID .
+-   This controller IP Address will be assigned as mgmtSystemAddr and set to each devices' additional properties.
+
+##  DCC Post Processor
    1. In Post Processing the profiledDeviceData received from dcc DP will be processed further based on clusterMoId.
-  
    2. The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
-
    3. Once grouped, the lowest IP or Hostname  of its respective  NE will be identified.
-
    4. Identified NE's managedNeId will be assigned to all other NEs of the same device.
+
