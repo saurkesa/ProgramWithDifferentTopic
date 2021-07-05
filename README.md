@@ -157,10 +157,11 @@ cat output.json
 
 ``` 
 ##  Post Processing
-###  De-Duplication Logic
-- Form a map with key - managedNeId and value - list of profiledDeviceData
-- Based on same managedNeId grouped device while iterating profiledDeviceData.
-- Iterating the map and for same key(managedNeId) based on considering the length of   profiledDeviceData if it is more than 0 then considered first one only.
+###  De-Dup Logic
+- Create a map by grouping managed devices with managedNeId as key and array of ProfiledDeviceData as value to identify duplicates.
+- If the length of value in above map is > 1, then there is a duplicate device with same managedNeId.
+- Remove/ De-duplicate the duplicate devices entry by considering only the first element in the value of the map and recreate the map.
+- Return the main array of ProfiledDeviceData using the recreated map.
 
 ### DCN Post Processor
 RegisteredDeviceMOID from ne.json is the identifier to indicate which assets are in the same APIC “cluster”.
@@ -176,4 +177,5 @@ You will need this in order to populate the “Controller” value for each asse
 - The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
 - Once grouped, the lowest IP or Hostname  of its respective  NE will be identified.
 - Identified NE's managedNeId will be assigned to all other NEs of the same device.
+
 
