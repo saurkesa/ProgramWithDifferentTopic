@@ -80,27 +80,89 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
  NOTE: k+smallest ---max heap will make and k+largest ---min heap will create
  
  
-| Attributes | Tags | Data Type | Description |
-| ---------- | ---- | --------- | ----------- |
-| assetType | Inventory | string | Type of asset : Hardware / Software |
-| profileName | Inventory | string | Profile Name field value |
-| hclStatus | Inventory | string | Hcl Status field value |
-| ucsDomain | Inventory | string | Ucs Domain field value |
-| hxClusterName | Inventory | string | Hx Cluster field value |
-| portalUrl | Inventory | string | Portal Url field value |
-| managementMode | Inventory | string | Management mode of the device - UCSM, IntersightStandalone, Intersight |
-| modTime | Inventory | long | Mod time field value |
-| accountMoid | Inventory | string | Account Moid field value |
-| connectionStatus | Inventory | string | Connection Status field value |
-| connectionStatusChangeTime | Inventory | long | Connection status change time field value |
-| ucsdStatus | Inventory | string | Ucsd status licensing field value |
-| ucsdLicenseInfoMoid | Inventory | string | Ucsd License Info field value |
-| intersightLicenseStatus | Inventory | string | Intersight License Status field value |
-| intersightLicenseLevel | Inventory | long | Intersight License Level field value |
-| parentMoid | Inventory | string | Parent Moid field value |
-| moid | Inventory | string | Moid field value |
-| clusterMoid | Inventory | string | Cluster Moid field value | 
-| platformType | Inventory | string | Platform Type field value |
-| intersightTags | Inventory | array | The tag entry. This contains both user and system defined tag  values. |
+This library module defines the highlevel logic and abstractions of the Cloud IBES profiler.
 
+Two main abstractions are defined here: Data Reader and Device Package.
 
+Data reader abstracts collection data reading. Initially we support data from cloud collector and DNAC, but additional file format can be supported in the future.
+Device package abstracts out device data profiling. Initially we support device data from cloud collector and DNAC, but additional device data format can be supported in the future.
+
+One or more reader and device package modules can be `plugged` in by registering its `selector`. Selector is the interface that would return a reader for a given collection data format or a device package for a given device data.
+
+## Profiler
+This library module defines the main abstractions of the 'profiler'. Profiler is a function that takes collection metadata as its input and returns an array of profiled data.
+
+![Profiler](docs/profiler.png)
+
+1. Profiler gets the Input Reader, DP (Device Package), Post Processor based on the DataSource in Collection Meta-Data
+2. Profiler will invoke the Input Reader to read the inventory file
+3. Input Reader returns Slice of Raw Device data which will be input for Profiling
+4. Simple Profiler/Concurrent Profiler will invoke DP for each Raw DeviceData, DP profiles the Raw data and returns Profiled device data
+5. Profiler will perform Deduplication, Post Processing based on the DataSource
+6. Inventory Common IBES Data Model will be added to cache
+
+## Build
+
+```
+make all
+```
+
+## Distribution
+
+```
+make dist
+```
+
+## Usage
+Profiler Library can be used as binary executable as well as it can be imported as a library. Usage of both has been illustrated with an example below.
+
+### CLI
+#### Profiler
+Execute the binary by passing the required arguments like -InputFilePath, -WorkerThreadCount, -DataSource, -DataFormat, -OutputFilePath
+* -InputFilePath     - Input file path*
+* -DataSource        - Input Data Source CSDF_IB/CSDF_INTERSIGHT*
+* -DataFormat        - Input Data Format CSDF_IB/CSDF_INTERSIGHT*
+* -WorkerThreadCount - Input Worker Thread Count
+* -OutputFilePath    - Output file path
+
+PAS Engine Output will be written in the OutputFilePath specified in JSON format
+
+```
+./bin/profiler -InputFilePath=test_sample_data/CSDF_INTERSIGHT_100632_1613538186067796000.zip -DataSource=CSDF_INTERSIGHT -DataFormat=CSDF_INTERSIGHT
+
+cat output.json 
+[...]
+
+```
+
+### Library
+#### Profiler
+```
+     // Initialize Profiler
+     profiler.RegisterInputReaderFactory(inputreader.InputReaderFactory)
+	 profiler.RegisterDevicePackageFactory(devicepackage.DevicePackageFactory)
+	 inputProfiler := &profiler.ConcurrentProfiler{
+	                    WorkerThreadCount: 1,
+	                   },
+     neFilter := func(neId string) bool {
+		// NO filtering
+		return true
+	}
+
+	// Profile Raw DeviceData to ProfiledDeviceData
+	if profiledDeviceDataList, err = inputProfiler.ProfileCollectionData(metadata, inventoryFilePath, neFilter); err != nil {
+		logger.ServiceLog.Errorf("Failed to Profile Inventory file %v, Reason %v", inventoryFilePath, err)
+		return nil, err
+	}
+
+``` 
+
+### this section will cover DCC Post Processing based on Data Source 
+
+   1.  In Post Processing the profiledDeviceData received from dcc DP will be processed further based on clusterMoId.
+  
+   2.  The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
+
+   3. Once grouped, the lowest IP or Hostname  of its respective  NE will be identified.
+
+   4.) Identified NE's managedNeId will be assigned to all other NEs of the same device.
