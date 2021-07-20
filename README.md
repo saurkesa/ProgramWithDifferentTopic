@@ -89,91 +89,51 @@ Device package abstracts out device data profiling. Initially we support device 
 
 One or more reader and device package modules can be `plugged` in by registering its `selector`. Selector is the interface that would return a reader for a given collection data format or a device package for a given device data.
 
-## Profiler
-This library module defines the main abstractions of the 'profiler'. Profiler is a function that takes collection metadata as its input and returns an array of profiled data.
+### Data Model : DCC Subscription
+Note : This section include new attributes added in parquet_ne.go and parquet_ne_subscription.go
 
-![Profiler](docs/profiler.png)
+#### 1- parquet_ne.go
 
-1. Profiler gets the Input Reader, DP (Device Package), Post Processor based on the DataSource in Collection Meta-Data
-2. Profiler will invoke the Input Reader to read the inventory file
-3. Input Reader returns Slice of Raw Device data which will be input for Profiling
-4. Simple Profiler/Concurrent Profiler will invoke DP for each Raw DeviceData, DP profiles the Raw data and returns Profiled device data
-5. Profiler will perform Deduplication, Post Processing based on the DataSource
-6. Inventory Common IBES Data Model will be added to cache
+ Attributes | Data Type | Description |
+| ---------- | --------- | ----------- |
+| EndCustomerGuId | string | End Customer GuId field value |
+| EndCustomerGuName | string | End Customer GuName field value |
+| LicenseLevelSummaryView | string | License Level Summary View field value |
 
-## Build
+#### 2- parquet_ne_subscription.go
 
-```
-make all
-```
-
-## Distribution
-
-```
-make dist
-```
-
-## Usage
-Profiler Library can be used as binary executable as well as it can be imported as a library. Usage of both has been illustrated with an example below.
-
-### CLI
-#### Profiler
-Execute the binary by passing the required arguments like -InputFilePath, -WorkerThreadCount, -DataSource, -DataFormat, -OutputFilePath
-* -InputFilePath     - Input file path*
-* -DataSource        - Input Data Source CSDF_IB/CSDF_INTERSIGHT*
-* -DataFormat        - Input Data Format CSDF_IB/CSDF_INTERSIGHT*
-* -WorkerThreadCount - Input Worker Thread Count
-* -OutputFilePath    - Output file path
-
-PAS Engine Output will be written in the OutputFilePath specified in JSON format
-
-```
-./bin/profiler -InputFilePath=test_sample_data/CSDF_INTERSIGHT_100632_1613538186067796000.zip -DataSource=CSDF_INTERSIGHT -DataFormat=CSDF_INTERSIGHT
-
-cat output.json 
-[...]
-
-```
-
-### Library
-#### Profiler
-```
-     // Initialize Profiler
-     profiler.RegisterInputReaderFactory(inputreader.InputReaderFactory)
-	 profiler.RegisterDevicePackageFactory(devicepackage.DevicePackageFactory)
-	 inputProfiler := &profiler.ConcurrentProfiler{
-	                    WorkerThreadCount: 1,
-	                   },
-     neFilter := func(neId string) bool {
-		// NO filtering
-		return true
-	}
-
-	// Profile Raw DeviceData to ProfiledDeviceData
-	if profiledDeviceDataList, err = inputProfiler.ProfileCollectionData(metadata, inventoryFilePath, neFilter); err != nil {
-		logger.ServiceLog.Errorf("Failed to Profile Inventory file %v, Reason %v", inventoryFilePath, err)
-		return nil, err
-	}
-
-``` 
-##  Post Processing
-###  De-Dup Logic
-- Create a map by grouping managed devices with managedNeId as key and array of ProfiledDeviceData as value to identify duplicates.
-- If the length of value in above map is > 1, then there is a duplicate device with same managedNeId.
-- Remove/ De-duplicate the duplicate devices entry by considering only the first element in the value of the map and recreate the map.
-- Return the main array of ProfiledDeviceData using the recreated map.
-### DCN Post Processor
-RegisteredDeviceMOID from ne.json is the identifier to indicate which assets are in the same APIC “cluster”.
-You will need this in order to populate the “Controller” value for each asset.  Here is the logic that has been agreed to:
--	Within a RegisteredDeviceMOID, get list of IPAddress where deviceType=controller.
--	Choose one IP (recommend we use lowest IP) to be the cluster/controller “IP”
--	Assign every asset in that RegisteredDeviceMOID with controller value of the select IP Address.
--   IP Address of Controller (APIC) with lowest IP needs to be mapped to its corresponding leafs, spines and other controllers that share the same  RegisteredDeviceMOID .
--   This controller IP Address will be assigned as mgmtSystemAddr and set to each devices' additional properties.
-###  DCC Post Processor
-- In Post Processing the profiledDeviceData received from dcc DP will be processed further based on clusterMoId.
-- The Equipments in an Equipment Array of a device will be grouped based on clusterMoId.
-- Once grouped, the lowest IP or Hostname  of its respective  NE will be identified.
-- Identified NE's managedNeId will be assigned to all other NEs of the same device.
-
-
+| Attributes | Data Type | Description |
+| ---------- | --------- | ----------- |
+| CoverageStatus | string | Coverage Status field value |
+| ServiceProgram | string | Service Program field value |
+| ContractNumber | string | Contract Number field value |
+| ServiceLevel | string | Service Level field value |
+| ServiceLevelDescription | string | Service Level Description field value |
+| TermEndDate | long | Term End Date field value |
+| TermStartDate | long | Term Start Date field value |
+| SubscriptionType | string | Subscription Type field value |
+| TermsAndContentCd | string | Terms And Content Cd field value |
+| SubscriptionCreateDate | long | Subscription Create Date field value |
+| SubscriptionStatus | string | Subscription Status field value |
+| SubscriptionReferenceId | string | Subscription Reference Id field value |
+| SubscriptionBillToSiteUseCustName | string | Subscription Bill To Site Use Cust Name field value |
+| SubscriptionBillToSiteUseId | long | Subscription Bill To Site Use Id field value |
+| SubscriptionProductClass | string | Subscription Product Class field value |
+| SubscriptionProductQuantity | long | Subscription Product Quantity field value |
+| EndCustomerGuAddressLine1 | string | End Customer Gu Address Line1 field value |
+| EndCustomerGuAddressLine2 | string | End Customer Gu Address Line2 field value |
+| EndCustomerGuAddressLine3 | string | End Customer Gu Address Line3 field value |
+| EndCustomerGuAddressLine4 | string | End Customer Gu Address Line4 field value |
+| EndCustomerGuCityName | string | End Customer Gu City Name field value |
+| EndCustomerGuState | string | End Customer Gu State field value |
+| EndCustomerGuPostalCd | string | End Customer Gu Postal Cd field value |
+| EndCustomerGuCountry | string | End Customer Gu Country field value |
+| PartnerBeGeoId | long | Partner Be Geo Id field value |
+| PartnerBeGeoName | string | Partner Be Geo Name field value |
+| PartnerBeName | string | Partner Be Name field value |
+| PartnerBeId | long | Partner Be Id field value |
+| MonetizationTypeCd | string | Monetization Type Cd field value |
+| ContractEntitlementDescr | string | Contract Entitlement Descr field value |
+| LicenseTermInMonth | long | License Term In Month field value |
+| WebOrderId | string | Web Order Id field value |
+| ErpSalesOrderNumber | long | Erp  Sales Order Number field value |
