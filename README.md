@@ -89,51 +89,44 @@ Device package abstracts out device data profiling. Initially we support device 
 
 One or more reader and device package modules can be `plugged` in by registering its `selector`. Selector is the interface that would return a reader for a given collection data format or a device package for a given device data.
 
-### Data Model : DCC Subscription
-Note : This section include new attributes added in parquet_ne.go and parquet_ne_subscription.go
+#### Data Model : DCC Subscription
+Note : This section include new attributes added in avro schema for DCC Subscription
 
-#### 1- parquet_ne.go
-
- Attributes | Data Type | Description |
-| ---------- | --------- | ----------- |
-| EndCustomerGuId | string | End Customer GuId field value |
-| EndCustomerGuName | string | End Customer GuName field value |
-| LicenseLevelSummaryView | string | License Level Summary View field value |
-
-#### 2- parquet_ne_subscription.go
-
-| Attributes | Data Type | Description |
-| ---------- | --------- | ----------- |
-| CoverageStatus | string | Coverage Status field value |
-| ServiceProgram | string | Service Program field value |
-| ContractNumber | string | Contract Number field value |
-| ServiceLevel | string | Service Level field value |
-| ServiceLevelDescription | string | Service Level Description field value |
-| TermEndDate | long | Term End Date field value |
-| TermStartDate | long | Term Start Date field value |
-| SubscriptionType | string | Subscription Type field value |
-| TermsAndContentCd | string | Terms And Content Cd field value |
-| SubscriptionCreateDate | long | Subscription Create Date field value |
-| SubscriptionStatus | string | Subscription Status field value |
-| SubscriptionReferenceId | string | Subscription Reference Id field value |
-| SubscriptionBillToSiteUseCustName | string | Subscription Bill To Site Use Cust Name field value |
-| SubscriptionBillToSiteUseId | long | Subscription Bill To Site Use Id field value |
-| SubscriptionProductClass | string | Subscription Product Class field value |
-| SubscriptionProductQuantity | long | Subscription Product Quantity field value |
-| EndCustomerGuAddressLine1 | string | End Customer Gu Address Line1 field value |
-| EndCustomerGuAddressLine2 | string | End Customer Gu Address Line2 field value |
-| EndCustomerGuAddressLine3 | string | End Customer Gu Address Line3 field value |
-| EndCustomerGuAddressLine4 | string | End Customer Gu Address Line4 field value |
-| EndCustomerGuCityName | string | End Customer Gu City Name field value |
-| EndCustomerGuState | string | End Customer Gu State field value |
-| EndCustomerGuPostalCd | string | End Customer Gu Postal Cd field value |
-| EndCustomerGuCountry | string | End Customer Gu Country field value |
-| PartnerBeGeoId | long | Partner Be Geo Id field value |
-| PartnerBeGeoName | string | Partner Be Geo Name field value |
-| PartnerBeName | string | Partner Be Name field value |
-| PartnerBeId | long | Partner Be Id field value |
-| MonetizationTypeCd | string | Monetization Type Cd field value |
-| ContractEntitlementDescr | string | Contract Entitlement Descr field value |
-| LicenseTermInMonth | long | License Term In Month field value |
-| WebOrderId | string | Web Order Id field value |
-| ErpSalesOrderNumber | long | Erp  Sales Order Number field value |
+| Attributes | Tags | Data Type | Description |
+| ---------- | ---- | --------- | ----------- |
+| EndCustomerGuId | Inventory | string | End Customer GuId field value |
+| EndCustomerGuName | Inventory | string | End Customer GuName field value |
+| LicenseLevelSummaryView | Inventory | string | License Level Summary View field value |
+| CoverageStatus | Subscription | string | Coverage Status field value |
+| ServiceProgram | Subscription | string | Service Program field value |
+| ContractNumber | Subscription | string | Contract Number field value |
+| ServiceLevel | Subscription | string | Service Level field value |
+| ServiceLevelDescription | Subscription | string | Service Level Description field value |
+| TermEndDate | Subscription | long | Term End Date field value |
+| TermStartDate | Subscription | long | Term Start Date field value |
+| SubscriptionType | Subscription | string | Subscription Type field value |
+| TermsAndContentCd | Subscription | string | Terms And Content Cd field value |
+| SubscriptionCreateDate | Subscription | long | Subscription Create Date field value |
+| SubscriptionStatus | Subscription | string | Subscription Status field value |
+| SubscriptionReferenceId | Subscription | string | Subscription Reference Id field value |
+| SubscriptionBillToSiteUseCustName | Subscription | string | Subscription Bill To Site Use Cust Name field value |
+| SubscriptionBillToSiteUseId | Subscription | long | Subscription Bill To Site Use Id field value |
+| SubscriptionProductClass | Subscription | string | Subscription Product Class field value |
+| SubscriptionProductQuantity | Subscription | long | Subscription Product Quantity field value |
+| EndCustomerGuAddressLine1 | Subscription | string | End Customer Gu Address Line1 field value |
+| EndCustomerGuAddressLine2 | Subscription | string | End Customer Gu Address Line2 field value |
+| EndCustomerGuAddressLine3 | Subscription | string | End Customer Gu Address Line3 field value |
+| EndCustomerGuAddressLine4 | Subscription | string | End Customer Gu Address Line4 field value |
+| EndCustomerGuCityName | Subscription | string | End Customer Gu City Name field value |
+| EndCustomerGuState | Subscription | string | End Customer Gu State field value |
+| EndCustomerGuPostalCd | Subscription | string | End Customer Gu Postal Cd field value |
+| EndCustomerGuCountry | Subscription | string | End Customer Gu Country field value |
+| PartnerBeGeoId | Subscription | long | Partner Be Geo Id field value |
+| PartnerBeGeoName | Subscription | string | Partner Be Geo Name field value |
+| PartnerBeName | Subscription | string | Partner Be Name field value |
+| PartnerBeId | Subscription | long | Partner Be Id field value |
+| MonetizationTypeCd | Subscription | string | Monetization Type Cd field value |
+| ContractEntitlementDescr | Subscription | string | Contract Entitlement Descr field value |
+| LicenseTermInMonth | Subscription | long | License Term In Month field value |
+| WebOrderId | Subscription | string | Web Order Id field value |
+| ErpSalesOrderNumber | Subscription | long | Erp  Sales Order Number field value |
