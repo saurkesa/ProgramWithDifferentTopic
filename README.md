@@ -80,3 +80,36 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
  NOTE: k+smallest ---max heap will make and k+largest ---min heap will create
  
  
+ ### Data Model : Meraki  
+Note : This section include new attributes added in parquet_ne.go 
+
+| Attributes | Data Type | Description |
+| ---------- | ---- | --------- | ----------- |
+| Address | string | Address field value |
+| Latitude | double | Latitude field value |
+| Longitude | double | Longitude field value |
+| OrgId | string | Organization ID field value |
+| OrgName | string | Organization name field value |
+| NetworkId | string | Network ID field value |
+| NetworkName | string | Network Name field value |
+| NetworkUrl | string | Network Url field value |
+| OrgUrl | string | Organization Url field value |
+| IsPDL | string | is per-device licensing field value |
+| LicenseType | string | LicenseType field value |
+| LicenseExpirationDate | long | LicenseExpirationDate field value |
+| LicenseActivationDate | long | LicenseActivationDate field value |
+| SourceLicenseStatus | string | SourceLicenseStatus field value |
+| DeviceLicenseEndDate | long | DeviceLicenseEndDate field value |
+| LicenseLevel | string | LicenseLevel field value |
+| LicenseStatus | string | LicenseStatus field value |
+| PrimaryDataRegion | string | PrimaryDataRegion field value |
+| LicenseKey | string | License Key field value |
+| ClaimedDate | long | claimed date field value |
+| InventoryDevicesModel | string | Inventory Devices Model field value |
+| PortalCustomerId | string | Portal CustomerId field value |
+| CxCustomerId | string | CX CustomerID field value |
+| CxCustomerName | string | CX CustomerName field value |
+| CxCustomerBuId | string | CX CustomerBuId field value |
+| CxCustomerBuName | string | CX CustomerBuName field value |
+ 
+ 
