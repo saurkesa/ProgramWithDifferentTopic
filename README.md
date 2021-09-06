@@ -80,11 +80,11 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
  NOTE: k+smallest ---max heap will make and k+largest ---min heap will create
  
  
- ### Data Model : Meraki  
+### Data Model : Meraki  
 Note : This section include new attributes added in parquet_ne.go 
 
 | Attributes | Data Type | Description |
-| ---------- | ---- | --------- | ----------- |
+| ---------- | --------- | ----------- |
 | Address | string | Address field value |
 | Latitude | double | Latitude field value |
 | Longitude | double | Longitude field value |
