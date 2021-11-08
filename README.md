@@ -81,9 +81,7 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
  
  
 * stack-json is created only when multistack chassis is available.
-* managedNeId is defined as method forms the Businesskey, based on Entity type passed.  
-  #### EntityTypeNE holds string NE   
-  EntityTypeNE = "NE"    
-  #### EntityTypeEQ holds string EQ  
-  EntityTypeEQ = "EQ"  
-* physical-json : that is set from DNAC Data reader , only in multistack chassis scenario 
+* managedNeId is defined as method forms the Businesskey, based on Entity type passed.   
+  EntityTypeNE holds string NE (EntityTypeNE = "NE")      
+  EntityTypeEQ holds string EQ (EntityTypeEQ = "EQ")   
+* physical-json : that is set from DNAC Data reader , only in multistack chassis scenario   stack-json will consider.
