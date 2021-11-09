@@ -81,5 +81,5 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
  
 #### Multi Chassis Usecase:
 * In order to detrermine the Managed NE in case of Multi Chassis the stack-json is used.
-* From each ne-json serialNumber is extracted and this serialNumber is mapped with the      stack-json to find the role applicable for given serialNumber.
+* From each ne-json serialNumber is extracted and this serialNumber is mapped with the  stack-json to find the role applicable for given serialNumber.
 * If the Role is MASTER for a given serialNumber then that NE will be considered as Managed Ne   and other NEs will be Sub NE.
