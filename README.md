@@ -79,8 +79,6 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
  
  NOTE: k+smallest ---max heap will make and k+largest ---min heap will create
  
-* stack-json is created only when multistack chassis is available.
-* managedNeId is defined as method forms the Businesskey, based on Entity type passed.  
-  EntityTypeNE holds string NE (EntityTypeNE = "NE")  
-  EntityTypeEQ holds string EQ (EntityTypeEQ = "EQ")
-* physical-json : that is set from DNAC Data reader , only in multistack chassis scenario   stack-json will consider.
+#### multichassis usecase
+From nejson serialNumber is extracted and this is mapped with the stackjson to find the role
+and if the Role is MASTER that NE will be considered as ManagedNe and other NEs are sub ne.
