@@ -1,0 +1,8 @@
+my:
+  greeting: hello from cloud server
+  list:
+    values : one,two,three
+db:
+  connection : '{connectionString:"http://", username: "user" , password: "pass"}'
+  host: 127.0.0.1
+  port: 1200
