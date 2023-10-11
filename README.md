@@ -83,3 +83,18 @@ bst(0,peak-1,arr,element) bst(peak, arr.length-1,arr,element)
 * In order to determine the Managed NE in case of Multi Chassis the stack-json is used.
 * From each ne-json serialNumber is extracted and this serialNumber is mapped with the  stack-json to find the role applicable for given serialNumber.
 * If the Role is MASTER for a given serialNumber then that NE will be considered as Managed Ne and other NEs will be Sub NE.
+
+
+#### Data Model : DCN1A
+Note : This section include new attributes added in avro schema for DCN1A 
+
+| Attributes | Tags | Data Type | Description |
+| ---------- | ---- | --------- | ----------- |
+| FabricId | Inventory | string | Fabric Id field value |
+| FabricName | Inventory | string | Fabric Name field value |
+| PodId | Inventory | string | Pod Id field value |
+| SiteName | Inventory | string | Site Name field value |
+| Vendor | Inventory | string | Vendor field value |
+| PartNumber | Inventory | string | Part Number field value |
+| LastRebootTime | Inventory | long | Last Reboot Time field value |
+| Controller | Inventory | string | Controller  field value |
